@@ -1,0 +1,64 @@
+import logo from '@/images/clients/unseal/logomark-dark.svg'
+import imageHero from './hero.jpg'
+import imageFounder from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'Nuova',
+  title: 'Transforming property management with a multi-role smart portal',
+  description:
+    'Nuova is a dynamic property management platform designed for seamless coordination between property managers, tenants, landlords, and contractors—all through personalized role-based portals.',
+  summary: [
+    'Nuova centralizes property management workflows—from tenant issues to contractor jobs—into an intuitive, role-specific dashboard system.',
+    'We developed a scalable React-based frontend with Redux authentication, real-time chat via Firebase, and integrated backend logic hosted on Railway.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2025-06',
+  service: 'Property management app, React, Firebase, Railway backend',
+  testimonial: {
+    author: { name: 'Debra Fiscal', role: 'Product Manager at Nuova' },
+    content:
+      'Working with ConveySoft allowed us to ship a truly multi-faceted platform that serves five distinct user roles. Their modular architecture and real-time integrations brought clarity and speed to a very complex domain.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+Nuova set out to modernize the property management experience through a single, streamlined system. The vision: create tailored digital portals for each role—property managers, landlords, tenants, contractors, and admins—each offering the exact tools they need to work efficiently, communicate clearly, and stay in sync.
+
+## Challenge
+
+- Build five unique portals with role-based access control and dynamic routing.
+- Implement authentication for both dashboard and real-time chat environments.
+- Allow for complete property oversight, job tracking, and maintenance updates in one place.
+- Enable secure communication and file sharing between all stakeholders.
+- Deploy a full-stack system that’s modular, real-time, and easy to maintain.
+
+## What we did
+
+<TagList>
+  <TagListItem>Frontend with React + Tailwind CSS</TagListItem>
+  <TagListItem>Role-based routing & auth with Redux Toolkit</TagListItem>
+  <TagListItem>Real-time messaging system with Firebase</TagListItem>
+  <TagListItem>Multi-role dashboard UI/UX (5 portals)</TagListItem>
+  <TagListItem>Backend integration via Railway-hosted Node APIs</TagListItem>
+</TagList>
+
+<Blockquote
+  author={{ name: 'Debra Fiscal', role: 'Product Manager at Nuova' }}
+  image={{ src: imageFounder }}
+>
+  ConveySoft delivered a system that not only works but delights. Their clarity in structuring multi-role workflows and embedding real-time tools into a scalable web stack made all the difference.
+</Blockquote>
+
+<StatList>
+  <StatListItem value="5+" label="Fully integrated user roles" />
+  <StatListItem value="1.2s" label="Avg. dashboard load time" />
+  <StatListItem value="99.97%" label="Uptime since deployment" />
+  <StatListItem value="24/7" label="Real-time messaging availability" />
+</StatList>
