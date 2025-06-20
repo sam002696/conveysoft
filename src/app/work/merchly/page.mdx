@@ -1,0 +1,64 @@
+import logo from '@/images/clients/unseal/logomark-dark.svg'
+import imageHero from './hero.jpg'
+import imageFounder from './debra-fiscal.jpg'
+
+export const caseStudy = {
+  client: 'Merchly',
+  title: 'Empowering creators with seamless merchandise storefronts',
+  description:
+    'Merchly is an end-to-end e-commerce platform designed for creators, enabling them to launch and manage custom merchandise stores with ease.',
+  summary: [
+    'Merchly empowers artists, influencers, and educators to sell custom-branded merchandise through a full-featured storefront.',
+    'We built a robust MERN‑stack platform including dynamic product setup, secure payment integration, and real-time inventory tracking.',
+  ],
+  logo,
+  image: { src: imageHero },
+  date: '2024-10',
+  service: 'E‑commerce platform, React, Node, CMS',
+  testimonial: {
+    author: { name: 'Alex Morgan', role: 'Founder & CEO of Merchly' },
+    content:
+      'Partnering with ConveySoft transformed our vision into a powerful storefront platform. Their team implemented scalable product flows and seamless checkout with exceptional speed and clarity.',
+  },
+}
+
+export const metadata = {
+  title: `${caseStudy.client} Case Study`,
+  description: caseStudy.description,
+}
+
+## Overview
+
+Merchly embarked on an ambitious mission: to give creators a polished, user‑friendly storefront for their own line of custom merch—without needing technical know‑how. They approached us to build an integrated platform where creators could design products, set prices, manage stock, and process payments—all in one place.
+
+## Challenge
+
+- Support for variable products (e.g., T‑shirts in multiple sizes/colors) with real-time inventory.
+- Frictionless checkout flow, including guest checkout and saved cards.
+- Admin dashboard for creators to manage orders, track sales, and view analytics.
+- Reliable hosting and scalability to handle flash‑sale traffic spikes.
+
+## What we did
+
+<TagList>
+  <TagListItem>Frontend (React + TypeScript)</TagListItem>
+  <TagListItem>Backend (Node.js, Express, MongoDB)</TagListItem>
+  <TagListItem>Stripe payment integration</TagListItem>
+  <TagListItem>Creator CMS & analytics dashboard</TagListItem>
+  <TagListItem>Containerized deployment (Docker, AWS ECS)</TagListItem>
+</TagList>
+
+<Blockquote
+  author={{ name: 'Alex Morgan', role: 'Founder & CEO of Merchly' }}
+  image={{ src: imageFounder }}
+>
+  ConveySoft helped us turn an idea into a functioning, revenue-generating platform. Their clear technical direction and fast execution made it possible to launch ahead of schedule, with a system that scales beautifully as our user base grows.
+</Blockquote>
+
+<StatList>
+  <StatListItem value="82%" label="Checkout completion rate" />
+  <StatListItem value="120k+" label="Monthly product views" />
+  <StatListItem value="99.98%" label="Uptime post-launch" />
+  <StatListItem value="3.4s" label="Average page load time" />
+</StatList>
+

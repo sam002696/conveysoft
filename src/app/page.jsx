@@ -143,23 +143,27 @@ function Services() {
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
             <ListItem title="Web development">
-              We specialise in crafting beautiful, high quality marketing pages.
-              The rest of the website will be a shell that uses lorem ipsum
-              everywhere.
+              Modern, responsive, and performance-driven websites built with
+              scalable architecture. Whether it&apos;s a company portfolio or a
+              full-fledged platform, each build is optimized for speed,
+              accessibility, and SEO.
             </ListItem>
             <ListItem title="Application development">
-              We have a team of skilled developers who are experts in the latest
-              app frameworks, like Angular 1 and Google Web Toolkit.
+              End-to-end development of custom applications using frameworks
+              like React, Next.js, Spring Boot, and Laravel. From frontend
+              interactivity to backend logic, everything is engineered for
+              performance and maintainability.
             </ListItem>
             <ListItem title="E-commerce">
-              We are at the forefront of modern e-commerce development. Which
-              mainly means adding your logo to the Shopify store template we’ve
-              used for the past six years.
+              Scalable e-commerce systems tailored to your business — from
+              custom storefronts to integrations with payment gateways, order
+              management, and inventory control. Built to grow as you grow.
             </ListItem>
             <ListItem title="Custom content management">
-              At Studio we understand the importance of having a robust and
-              customised CMS. That’s why we run all of our client projects out
-              of a single, enormous Joomla instance.
+              Flexible content management systems tailored to your workflow.
+              Whether it&apos;s a headless CMS or a fully customized admin
+              panel, we ensure you have full control over your content with ease
+              and security.
             </ListItem>
           </List>
         </div>
@@ -174,19 +178,21 @@ export const metadata = {
 }
 
 export default async function Home() {
-  let caseStudies = (await loadCaseStudies()).slice(0, 3)
+  let caseStudies = (await loadCaseStudies()).slice(0, 4)
 
   return (
     <RootLayout>
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-balance text-neutral-950 sm:text-7xl">
-            Award-winning development studio based in Denmark.
+            Scalable software solutions for modern businesses.
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
-            We are a development studio working at the intersection of design
-            and technology. It’s a really busy intersection though — a lot of
-            our staff have been involved in hit and runs.
+            We deliver scalable, secure, and custom-built software solutions
+            designed to solve real business challenges. From system architecture
+            and backend services to modern web and mobile interfaces, each
+            project is engineered with performance, usability, and long-term
+            growth in mind.
           </p>
         </FadeIn>
       </Container>
