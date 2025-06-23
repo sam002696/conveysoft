@@ -3,22 +3,22 @@ import imageHero from './hero.jpg'
 import imageFounder from './debra-fiscal.jpg'
 
 export const caseStudy = {
-  client: 'Potea',
-  title: 'Delivering a mobile-first shopping experience for plant lovers',
+  client: 'ArisPay',
+  title: 'Simplifying multichain crypto finance with a secure wallet solution',
   description:
-    'Potea is a seamless plant e-commerce platform built with React Native and Spring Boot, offering real-time cart management, secure authentication, and smooth checkout for modern plant enthusiasts.',
+    'ArisPay is a non-custodial multichain wallet designed for seamless asset management across multiple blockchains, prioritizing security, usability, and speed.',
   summary: [
-    'Potea makes plant shopping delightful and accessible through a mobile-first app designed with dynamic cart flows and JWT-secured authentication.',
-    'We delivered a robust client-server architecture using React Native for the frontend and Spring Boot with MySQL for the backend, optimized for performance and usability.',
+    'ArisPay empowers users to manage crypto assets with ease—supporting transfers, swaps, and transaction history across chains.',
+    'We developed a full-featured wallet with secure auth via mnemonic phrases, multichain support, and a scalable modular frontend.',
   ],
   logo,
   image: { src: imageHero },
-  date: '2025-06',
-  service: 'Mobile commerce app, React Native, Spring Boot, MySQL',
+  date: '2025-01',
+  service: 'Crypto wallet, React, Redux-Saga, Laravel API',
   testimonial: {
-    author: { name: 'Debra Fiscal', role: 'Product Strategist at Potea' },
+    author: { name: 'Debra Fiscal', role: 'Product Lead at ArisPay' },
     content:
-      'ConveySoft built us an app that feels modern, responsive, and highly functional. Their ability to stitch together a complex backend with a clean mobile experience was exactly what we needed to stand out in the e-commerce space.',
+      'ConveySoft’s expertise was critical in delivering a wallet that balances functionality with airtight security. Their modular approach helped us scale features quickly while maintaining top-tier performance.',
   },
 }
 
@@ -29,36 +29,36 @@ export const metadata = {
 
 ## Overview
 
-Potea was envisioned as a digital bridge between passionate plant collectors and curated greenery. The goal was to design a responsive and elegant mobile application where users could securely browse, purchase, and track plant orders with ease—all built with scalable, enterprise-ready technology.
+ArisPay set out to create a secure, user-friendly crypto wallet supporting multichain and testnet operations. The aim was to provide users with a full view of their assets—along with fast, secure actions like transfers, swaps, and purchases—without sacrificing performance or control.
 
 ## Challenge
 
-- Create a fast, mobile-first shopping experience with smooth state handling.
-- Secure user accounts with JWT-based authentication.
-- Build a real-time cart and order summary system optimized for usability.
-- Ensure seamless coordination between frontend and backend systems.
-- Keep the UI lightweight while integrating complex backend logic.
+- Non-custodial authentication using mnemonic phrase recovery.
+- Multi-network support (Ethereum, testnets, and others) with real-time sync.
+- Complete transaction tracking and on-chain history visibility.
+- Intuitive and modular UI with performance-optimized components.
+- Reliable integration with third-party APIs (e.g., Infura, Laravel backend).
 
 ## What we did
 
 <TagList>
-  <TagListItem>React Native mobile app</TagListItem>
-  <TagListItem>Redux Toolkit & Redux-Saga state management</TagListItem>
-  <TagListItem>Secure JWT auth system</TagListItem>
-  <TagListItem>Spring Boot REST APIs</TagListItem>
-  <TagListItem>MySQL data persistence layer</TagListItem>
+  <TagListItem>Frontend (React, Tailwind, Redux Toolkit + Saga)</TagListItem>
+  <TagListItem>Secure wallet auth with IndexedDB + Mnemonics</TagListItem>
+  <TagListItem>Multichain & testnet integration (Infura, custom APIs)</TagListItem>
+  <TagListItem>Transaction & swap engine with full history</TagListItem>
+  <TagListItem>Backend with Laravel + MongoDB</TagListItem>
 </TagList>
 
 <Blockquote
-  author={{ name: 'Debra Fiscal', role: 'Product Strategist at Potea' }}
+  author={{ name: 'Debra Fiscal', role: 'Product Lead at ArisPay' }}
   image={{ src: imageFounder }}
 >
-  ConveySoft delivered a mobile experience that performs as beautifully as it looks. The fluid cart logic, integrated auth, and overall responsiveness make this app a joy for our users—and a win for our brand.
+  ConveySoft helped us deliver a production-ready wallet that feels effortless for users but is architected with careful attention to security and scale. Their frontend and backend synergy made a huge impact on our launch success.
 </Blockquote>
 
 <StatList>
-  <StatListItem value="3.2s" label="Avg. checkout completion time" />
-  <StatListItem value="12k+" label="Monthly mobile sessions" />
-  <StatListItem value="99.9%" label="Successful transaction rate" />
-  <StatListItem value="4.8★" label="User rating on app store" />
+  <StatListItem value="4.9s" label="Avg. wallet sync time" />
+  <StatListItem value="30k+" label="Monthly active users" />
+  <StatListItem value="99.99%" label="API uptime since beta" />
+  <StatListItem value="3,200+" label="Daily multichain transactions" />
 </StatList>
