@@ -8,37 +8,47 @@ import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
-import logoBrightPath from '@/images/clients/bright-path/logo-light.svg'
-import logoFamilyFund from '@/images/clients/family-fund/logo-light.svg'
-import logoGreenLife from '@/images/clients/green-life/logo-light.svg'
-import logoHomeWork from '@/images/clients/home-work/logo-light.svg'
-import logoMailSmirk from '@/images/clients/mail-smirk/logo-light.svg'
-import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.svg'
 import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
-import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
-import logoUnseal from '@/images/clients/unseal/logo-light.svg'
+
+import logoReact from '@/images/technologies/react.svg'
+import logoJavaScript from '@/images/technologies/javascript.svg'
+import logoPHP from '@/images/technologies/php.svg'
+import logoLaravel from '@/images/technologies/laravel.svg'
+import logoSpringBoot from '@/images/technologies/springboot.svg'
+import logoMySQL from '@/images/technologies/mysql.svg'
+import logoMongoDB from '@/images/technologies/mongodb.svg'
+import logoDocker from '@/images/technologies/docker.svg'
+import logoReduxToolkit from '@/images/technologies/redux.svg'
+import logoReduxSaga from '@/images/technologies/reduxsaga.svg'
+import logoTailwind from '@/images/technologies/tailwindcss.svg'
+import logojwt from '@/images/technologies/jsonwebtokens.svg'
+
 import imageLaptop from '@/images/laptop.jpg'
 import { loadCaseStudies } from '@/lib/mdx'
 import { RootLayout } from '@/components/RootLayout'
 
-const clients = [
-  ['Phobia', logoPhobiaLight],
-  ['Family Fund', logoFamilyFund],
-  ['Unseal', logoUnseal],
-  ['Mail Smirk', logoMailSmirk],
-  ['Home Work', logoHomeWork],
-  ['Green Life', logoGreenLife],
-  ['Bright Path', logoBrightPath],
-  ['North Adventures', logoNorthAdventures],
+const technologies = [
+  ['React', logoReact],
+  ['JavaScript', logoJavaScript],
+  ['PHP', logoPHP],
+  ['Laravel', logoLaravel],
+  ['Spring Boot', logoSpringBoot],
+  ['MySQL', logoMySQL],
+  ['MongoDB', logoMongoDB],
+  ['Docker', logoDocker],
+  ['Redux Toolkit', logoReduxToolkit],
+  ['Redux Saga', logoReduxSaga],
+  ['Tailwind CSS', logoTailwind],
+  ['JWT', logojwt],
 ]
 
-function Clients() {
+function Technologies() {
   return (
     <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We’ve worked with hundreds of amazing people
+            Technologies we’ve worked with
           </h2>
           <div className="h-px flex-auto bg-neutral-800" />
         </FadeIn>
@@ -47,10 +57,21 @@ function Clients() {
             role="list"
             className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
           >
-            {clients.map(([client, logo]) => (
-              <li key={client}>
+            {technologies.map(([tech, logo]) => (
+              <li key={tech} className="flex flex-col items-center space-y-2">
                 <FadeIn>
-                  <Image src={logo} alt={client} unoptimized />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-white p-4 shadow-md">
+                    <Image
+                      src={logo}
+                      alt={tech}
+                      width={40}
+                      height={40}
+                      unoptimized
+                    />
+                  </div>
+                  <div className="pt-1 text-center text-sm font-medium text-white">
+                    {tech}
+                  </div>
                 </FadeIn>
               </li>
             ))}
@@ -197,7 +218,7 @@ export default async function Home() {
         </FadeIn>
       </Container>
 
-      <Clients />
+      <Technologies />
 
       <CaseStudies caseStudies={caseStudies} />
 
