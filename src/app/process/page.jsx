@@ -109,7 +109,7 @@ function Build() {
         author={{ name: 'Debra Fiscal', role: 'Product Manager at Nuova' }}
         className="mt-12"
       >
-        ConveySoft’s team brought our vision to life with professionalism and
+        Conveysoft’s team brought our vision to life with professionalism and
         precision. Their transparent process and high-quality code made the
         build phase seamless.
       </Blockquote>
@@ -175,7 +175,7 @@ function Values() {
         title="Balancing reliability and innovation"
       >
         <p>
-          At ConveySoft, our values are more than just words—they shape the way
+          At Conveysoft, our values are more than just words—they shape the way
           we work, collaborate, and build software. We’re committed to
           delivering reliable, impactful solutions that help our clients thrive
           in a rapidly evolving digital landscape.
@@ -225,7 +225,7 @@ export default function Process() {
     <RootLayout>
       <PageIntro eyebrow="Our process" title="How we work">
         <p>
-          At ConveySoft, we follow a structured and collaborative approach to
+          At Conveysoft, we follow a structured and collaborative approach to
           software development. From initial discovery to final delivery, we
           focus on building scalable, high-quality solutions tailored to our
           clients’ unique needs. With years of experience and a deep
