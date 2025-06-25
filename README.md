@@ -28,15 +28,11 @@ Conveysoft Studio is a modern, performant, and extensible web portfolio built us
 
 ## 🧑‍💻 Getting Started
 
-Clone the repo and install dependencies:
+Clone the repo and install dependencies::
 
 ```bash
-npm install
-```
-
-To get started with this template, first install the npm dependencies:
-
-```bash
+git clone https://github.com/sam002696/conveysoft.git
+cd conveysoft
 npm install
 ```
 
