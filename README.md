@@ -1,4 +1,4 @@
-# Conveysoft Studio
+# Conveysoft
 
 Conveysoft Studio is a modern, performant, and extensible web portfolio built using [Tailwind CSS](https://tailwindcss.com), [Next.js](https://nextjs.org), and [Framer Motion](https://www.framer.com/). It showcases scalable software solutions, technical case studies, and service offerings through a clean, responsive design.
 
