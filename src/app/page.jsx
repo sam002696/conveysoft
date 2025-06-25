@@ -8,11 +8,11 @@ import { List, ListItem } from '@/components/List'
 import { SectionIntro } from '@/components/SectionIntro'
 import { StylizedImage } from '@/components/StylizedImage'
 import { Testimonial } from '@/components/Testimonial'
-import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
+import logoUnsealDark from '@/images/clients/unseal/logomark-dark.svg'
 
 import logoReact from '@/images/technologies/react.svg'
 import logoJavaScript from '@/images/technologies/javascript.svg'
-import logoPHP from '@/images/technologies/php.svg'
+import logoNodejs from '@/images/technologies/nodejs.svg'
 import logoLaravel from '@/images/technologies/laravel.svg'
 import logoSpringBoot from '@/images/technologies/springboot.svg'
 import logoMySQL from '@/images/technologies/mysql.svg'
@@ -30,7 +30,7 @@ import { RootLayout } from '@/components/RootLayout'
 const technologies = [
   ['React', logoReact],
   ['JavaScript', logoJavaScript],
-  ['PHP', logoPHP],
+  ['NodeJs', logoNodejs],
   ['Laravel', logoLaravel],
   ['Spring Boot', logoSpringBoot],
   ['MySQL', logoMySQL],
@@ -163,28 +163,28 @@ function Services() {
             </FadeIn>
           </div>
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
-            <ListItem title="Web development">
+            <ListItem title="Web Development">
               Modern, responsive, and performance-driven websites built with
               scalable architecture. Whether it&apos;s a company portfolio or a
               full-fledged platform, each build is optimized for speed,
               accessibility, and SEO.
             </ListItem>
-            <ListItem title="Application development">
+            <ListItem title="Application Development">
               End-to-end development of custom applications using frameworks
               like React, Next.js, Spring Boot, and Laravel. From frontend
               interactivity to backend logic, everything is engineered for
               performance and maintainability.
             </ListItem>
-            <ListItem title="E-commerce">
+            <ListItem title="E-Commerce">
               Scalable e-commerce systems tailored to your business — from
               custom storefronts to integrations with payment gateways, order
               management, and inventory control. Built to grow as you grow.
             </ListItem>
-            <ListItem title="Custom content management">
-              Flexible content management systems tailored to your workflow.
-              Whether it&apos;s a headless CMS or a fully customized admin
-              panel, we ensure you have full control over your content with ease
-              and security.
+            <ListItem title="Blockchain Development">
+              End-to-end blockchain solutions tailored to your needs—from smart
+              contract development to full dApp integration. Whether you&apos;re
+              building on Ethereum, Solana, or Layer 2 networks, we ensure
+              secure, scalable, and future-ready blockchain infrastructure.
             </ListItem>
           </List>
         </div>
@@ -224,11 +224,12 @@ export default async function Home() {
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+        client={{ name: 'Nuova', logo: logoUnsealDark }}
       >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
+        The team at Conveysoft went above and beyond with Nuova’s
+        onboarding—building tailored role-based portals that deliver the exact
+        tools each user needs, from secure communication to real-time property
+        oversight, all without overwhelming complexity.
       </Testimonial>
 
       <Services />

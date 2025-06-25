@@ -27,13 +27,13 @@ export function Offices({ invert = false, ...props }) {
           Dhaka 1229, Bangladesh
         </Office>
       </li>
-      {/* <li>
-        <Office name="Billund" invert={invert}>
-          24 Lego Allé
+      <li>
+        <Office name="Any query?" invert={invert}>
+          Email us at
           <br />
-          7190, Billund, Denmark
+          <a href="mailto:conveysoft@gmail.com">conveysoft@gmail.com</a>
         </Office>
-      </li> */}
+      </li>
     </ul>
   )
 }

@@ -4,21 +4,21 @@ import imageFounder from './debra-fiscal.jpg'
 
 export const caseStudy = {
   client: 'Merchly',
-  title: 'Empowering creators with seamless merchandise storefronts',
+  title: 'A full-stack Laravel & React commerce solution with real-time notifications',
   description:
-    'Merchly is an end-to-end e-commerce platform designed for creators, enabling them to launch and manage custom merchandise stores with ease.',
+    'This modular and role-based e-commerce platform enables customers to shop and admins to manage orders efficiently, with real-time updates and secure role separation.',
   summary: [
-    'Merchly empowers artists, influencers, and educators to sell custom-branded merchandise through a full-featured storefront.',
-    'We built a robust MERN‑stack platform including dynamic product setup, secure payment integration, and real-time inventory tracking.',
+    'Designed and implemented a scalable Laravel + React e-commerce platform with complete customer and admin flows.',
+    'Integrated role-based authentication, real-time notifications, optimistic UI updates, and a modern admin dashboard.',
   ],
   logo,
   image: { src: imageHero },
-  date: '2025-05',
-  service: 'E‑commerce platform, React, Node, CMS',
+  date: '2025-06',
+  service: 'React, Laravel, E-commerce, AWS, Docker',
   testimonial: {
-    author: { name: 'Alex Morgan', role: 'Founder & CEO of Merchly' },
+    author: { name: 'Sadman Sakib', role: 'Lead Developer' },
     content:
-      'Partnering with Conveysoft transformed our vision into a powerful storefront platform. Their team implemented scalable product flows and seamless checkout with exceptional speed and clarity.',
+      'This project showcases our team’s ability to build scalable, secure platforms with modern tech. The combination of Laravel, React, and Redux-Saga ensured robust performance and clean separation of concerns.',
   },
 }
 
@@ -29,23 +29,21 @@ export const metadata = {
 
 ## Overview
 
-Merchly embarked on an ambitious mission: to give creators a polished, user‑friendly storefront for their own line of custom merch—without needing technical know‑how. They approached us to build an integrated platform where creators could design products, set prices, manage stock, and process payments—all in one place.
+A scalable, role-based e-commerce application developed for efficient product and order management, featuring distinct experiences for both admins and customers. It leverages modern frontend frameworks and robust backend architecture to ensure performance, modularity, and ease of maintenance.
 
 ## Challenge
 
-- Support for variable products (e.g., T‑shirts in multiple sizes/colors) with real-time inventory.
-- Frictionless checkout flow, including guest checkout and saved cards.
-- Admin dashboard for creators to manage orders, track sales, and view analytics.
-- Reliable hosting and scalability to handle flash‑sale traffic spikes.
+- Separate login flows for Admins and Customers with token-based role evaluation.
+- Real-time order tracking and toast-based customer notifications.
+- Admin-facing dashboard to manage products, images, categories, sizes, and brands.
+- Optimistic UI updates for smoother UX during cart and order interactions.
+- Scalable deployment using AWS, Docker, and Laravel’s event-driven backend.
+
 
 ## What we did
 
 <TagList>
-  <TagListItem>Frontend (React + TypeScript)</TagListItem>
-  <TagListItem>Backend (Node.js, Express, MongoDB)</TagListItem>
-  <TagListItem>Stripe payment integration</TagListItem>
-  <TagListItem>Creator CMS & analytics dashboard</TagListItem>
-  <TagListItem>Containerized deployment (Docker, AWS ECS)</TagListItem>
+   <TagListItem>Async Logic (Redux Saga)</TagListItem> <TagListItem>Backend (Laravel 12 + MySQL)</TagListItem> <TagListItem>Role-based auth with Laravel Sanctum</TagListItem> <TagListItem>Email + Real-time Notifications</TagListItem> <TagListItem>Service Layer Architecture (Clean code)</TagListItem> <TagListItem>Dockerized deployment + AWS RDS</TagListItem>
 </TagList>
 
 <Blockquote
@@ -56,9 +54,9 @@ Merchly embarked on an ambitious mission: to give creators a polished, user‑fr
 </Blockquote>
 
 <StatList>
-  <StatListItem value="82%" label="Checkout completion rate" />
-  <StatListItem value="120k+" label="Monthly product views" />
-  <StatListItem value="99.98%" label="Uptime post-launch" />
-  <StatListItem value="3.4s" label="Average page load time" />
+  <StatListItem value="100+" label="Tested feature endpoints" /> 
+  <StatListItem value="99.9%" label="API uptime in production" /> 
+  <StatListItem value="1.5s" label="Average order placement time" /> 
+  <StatListItem value="0 bugs" label="Post-deploy critical issues" />
 </StatList>
 

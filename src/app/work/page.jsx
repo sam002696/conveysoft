@@ -148,9 +148,10 @@ export default async function Work() {
         title="Proven solutions for real-world problems."
       >
         <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
+          We build scalable, user-centric digital solutions tailored to modern
+          business needs. From real-time platforms to blockchain-powered
+          systems, our work reflects a commitment to solving complex problems
+          through thoughtful design and robust engineering.
         </p>
       </PageIntro>
 
@@ -160,11 +161,11 @@ export default async function Work() {
         className="mt-24 sm:mt-32 lg:mt-40"
         client={{ name: 'Mail Smirk', logo: logoMailSmirk }}
       >
-        We approached <em>Studio</em> because we loved their past work. They
+        We approached <em>Conveysoft</em> because we loved their past work. They
         delivered something remarkably similar in record time.
       </Testimonial>
 
-      <Clients />
+      {/* <Clients /> */}
 
       <ContactSection />
     </RootLayout>
