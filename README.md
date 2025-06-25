@@ -30,15 +30,15 @@ Conveysoft Studio is a modern, performant, and extensible web portfolio built us
 
 Clone the repo and install dependencies:
 
-````bash
+```bash
 npm install
-
+```
 
 To get started with this template, first install the npm dependencies:
 
 ```bash
 npm install
-````
+```
 
 Next, run the development server:
 
