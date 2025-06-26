@@ -193,9 +193,27 @@ function Services() {
   )
 }
 
+// export const metadata = {
+//   description:
+//     'We help businesses bring ideas to life through expert design, seamless development, and reliable product delivery.',
+// }
+
 export const metadata = {
+  title: 'Conveysoft – Scalable Software Solutions for Modern Businesses',
   description:
-    'We are a development studio working at the intersection of design and technology.',
+    'We help businesses bring ideas to life through expert design, seamless development, and reliable product delivery.',
+  authors: [{ name: 'Conveysoft Team', url: 'https://www.conveysoft.dev' }],
+  creator: 'ConveySoft',
+  metadataBase: new URL('https://www.conveysoft.dev'),
+  openGraph: {
+    title: 'Conveysoft – Scalable Software Solutions for Modern Businesses',
+    description:
+      'Explore tailored software solutions that drive business growth. We build custom applications, e-commerce platforms, and blockchain systems.',
+    url: 'https://www.conveysoft.dev',
+    siteName: 'Conveysoft',
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default async function Home() {
