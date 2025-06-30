@@ -66,20 +66,13 @@ jobs:
           vercel build --token=$VERCEL_TOKEN
           DEPLOY_URL=$(vercel deploy --prebuilt --token=$VERCEL_TOKEN --yes | grep -o 'https://[a-zA-Z0-9.-]*\.vercel\.app' | tail -n1)
           echo "deploymentUrl=$DEPLOY_URL" >> $GITHUB_OUTPUT
-          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
-
-      - name: Alias custom preview domain
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          vercel alias set ${{ steps.deploy.outputs.deploymentUrl }} ${{ needs.build.outputs.alias }}.conveysoft.dev --token=$VERCEL_TOKEN
 
       - name: Comment Preview URL on PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} \
-            --body "🌐 Preview deployed: https://${{ needs.build.outputs.alias }}.conveysoft.dev"
+            --body "🌐 Preview deployed: ${{ steps.deploy.outputs.deploymentUrl }}"
 
   deploy:
     name: Deploy to Production
