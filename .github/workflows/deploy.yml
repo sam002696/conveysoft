@@ -79,8 +79,6 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    outputs:
-      deployId: ${{ steps.vercel-deploy.outputs.deployId }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -88,11 +86,8 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel
 
-      - name: Ensure jq is installed
-        run: sudo apt-get update && sudo apt-get install -y jq
-
       - name: Deploy to Vercel (Production)
-        id: vercel-deploy
+        id: vercel-prod
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -100,10 +95,7 @@ jobs:
         run: |
           vercel pull --yes --environment=production --token=$VERCEL_TOKEN
           vercel build --token=$VERCEL_TOKEN
-          OUTPUT=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --yes --json)
-          echo "$OUTPUT"
-          DEPLOY_ID=$(echo "$OUTPUT" | jq -r '.id')
-          echo "deployId=$DEPLOY_ID" >> $GITHUB_OUTPUT
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --yes
 
   release:
     name: Create GitHub Release
@@ -138,6 +130,6 @@ jobs:
             🚀 Production deployment completed successfully!
 
             🔖 Release tag: `${{ steps.tag.outputs.version }}`
-            📦 Vercel Deploy ID: `${{ needs.deploy.outputs.deployId }}`
+            🌐 Live URL: [https://www.conveysoft.dev](https://www.conveysoft.dev)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
