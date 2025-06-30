@@ -1,0 +1,143 @@
+name: CI/CD with Vercel and Custom Domain
+
+permissions:
+  pull-requests: write
+  contents: write
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build App
+    runs-on: ubuntu-latest
+    outputs:
+      alias: ${{ steps.set-alias.outputs.alias }}
+    env:
+      NEXT_PUBLIC_FORMSPREE_ENDPOINT: ${{ secrets.NEXT_PUBLIC_FORMSPREE_ENDPOINT }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Set Preview Alias
+        id: set-alias
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          FALLBACK=${{ github.run_number }}
+          ALIAS="preview-pr-${PR_NUMBER:-$FALLBACK}"
+          echo "alias=$ALIAS" >> $GITHUB_OUTPUT
+
+  deploy-preview:
+    name: Deploy Preview to Vercel
+    needs: build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel (Preview)
+        id: deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+          vercel build --token=$VERCEL_TOKEN
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=$VERCEL_TOKEN --yes | grep -o 'https://[a-zA-Z0-9.-]*\.vercel\.app' | tail -n1)
+          echo "deploymentUrl=$DEPLOY_URL" >> $GITHUB_OUTPUT
+
+      - name: Comment Preview URL on PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body "🌐 Preview deployed: ${{ steps.deploy.outputs.deploymentUrl }}"
+
+  deploy:
+    name: Deploy to Production
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    outputs:
+      deployId: ${{ steps.vercel-deploy.outputs.deployId }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Ensure jq is installed
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Deploy to Vercel (Production)
+        id: vercel-deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+          vercel build --token=$VERCEL_TOKEN
+          OUTPUT=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --yes --json)
+          echo "$OUTPUT"
+          DEPLOY_ID=$(echo "$OUTPUT" | jq -r '.id')
+          echo "deployId=$DEPLOY_ID" >> $GITHUB_OUTPUT
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate Release Tag
+        id: tag
+        run: |
+          DATE=$(date +'%Y.%m.%d')
+          TIME=$(date +'%H%M%S')
+          VERSION="v${DATE}-${TIME}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ steps.tag.outputs.version }}
+          git push origin ${{ steps.tag.outputs.version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.version }}
+          name: Release ${{ steps.tag.outputs.version }}
+          body: |
+            🚀 Production deployment completed successfully!
+
+            🔖 Release tag: `${{ steps.tag.outputs.version }}`
+            📦 Vercel Deploy ID: `${{ needs.deploy.outputs.deployId }}`
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
