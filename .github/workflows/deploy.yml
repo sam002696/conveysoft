@@ -50,6 +50,9 @@ jobs:
     needs: build
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    environment:
+      name: preview/${{ github.head_ref }}
+      url: ${{ steps.deploy.outputs.deploymentUrl }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -67,39 +70,21 @@ jobs:
           DEPLOY_URL=$(vercel deploy --prebuilt --token=$VERCEL_TOKEN --yes | grep -o 'https://[a-zA-Z0-9.-]*\.vercel\.app' | tail -n1)
           echo "deploymentUrl=$DEPLOY_URL" >> $GITHUB_OUTPUT
 
-      - name: Report Preview Deployment to GitHub
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          gh auth setup-git
-          gh api repos/${{ github.repository }}/deployments \
-            -f ref="${{ github.event.pull_request.head.sha }}" \
-            -f environment="Preview" \
-            -f auto_merge=false \
-            -f required_contexts="[]" \
-            -f transient_environment=true \
-            -f production_environment=false > deployment.json
-
-          DEPLOYMENT_ID=$(jq '.id' deployment.json)
-
-          gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
-            -f state=success \
-            -f environment_url="${{ steps.deploy.outputs.deploymentUrl }}" \
-            -f description="Preview deployment ready" \
-            -f log_url="${{ steps.deploy.outputs.deploymentUrl }}"
-
       - name: Comment Preview URL on PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} \
-            --body "🌐 Preview deployed: ${{ steps.deploy.outputs.deploymentUrl }}"
+          --body "🌐 Preview deployed: ${{ steps.deploy.outputs.deploymentUrl }}"
 
   deploy:
     name: Deploy to Production
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://www.conveysoft.dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -120,33 +105,10 @@ jobs:
           vercel build --prod --token=$VERCEL_TOKEN
 
       - name: Deploy to Vercel (Production)
-        id: deploy
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
-          PROD_URL=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --yes | grep -o 'https://[a-zA-Z0-9.-]*\.vercel\.app' | tail -n1)
-          echo "prodUrl=$PROD_URL" >> $GITHUB_OUTPUT
-
-      - name: Report Production Deployment to GitHub
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          gh auth setup-git
-          gh api repos/${{ github.repository }}/deployments \
-            -f ref="main" \
-            -f environment="Production" \
-            -f auto_merge=false \
-            -f required_contexts="[]" \
-            -f transient_environment=false \
-            -f production_environment=true > deployment.json
-
-          DEPLOYMENT_ID=$(jq '.id' deployment.json)
-
-          gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
-            -f state=success \
-            -f environment_url="https://www.conveysoft.dev" \
-            -f description="Production deployment live" \
-            -f log_url="${{ steps.deploy.outputs.prodUrl }}"
+          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN --yes
 
   release:
     name: Create GitHub Release
