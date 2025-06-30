@@ -69,16 +69,19 @@ jobs:
 
       - name: Report Preview Deployment to GitHub
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
+          gh auth setup-git
           gh api repos/${{ github.repository }}/deployments \
-            -f ref="${{ github.head_ref }}" \
+            -f ref="${{ github.event.pull_request.head.sha }}" \
             -f environment="Preview" \
             -f auto_merge=false \
             -f required_contexts="[]" \
             -f transient_environment=true \
             -f production_environment=false > deployment.json
+
           DEPLOYMENT_ID=$(jq '.id' deployment.json)
+
           gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
             -f state=success \
             -f environment_url="${{ steps.deploy.outputs.deploymentUrl }}" \
@@ -126,16 +129,19 @@ jobs:
 
       - name: Report Production Deployment to GitHub
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
+          gh auth setup-git
           gh api repos/${{ github.repository }}/deployments \
-            -f ref=main \
+            -f ref="main" \
             -f environment="Production" \
             -f auto_merge=false \
             -f required_contexts="[]" \
             -f transient_environment=false \
             -f production_environment=true > deployment.json
+
           DEPLOYMENT_ID=$(jq '.id' deployment.json)
+
           gh api repos/${{ github.repository }}/deployments/$DEPLOYMENT_ID/statuses \
             -f state=success \
             -f environment_url="https://www.conveysoft.dev" \
