@@ -31,7 +31,7 @@ export function Offices({ invert = false, ...props }) {
         <Office name="Any query?" invert={invert}>
           Email us at
           <br />
-          <a href="mailto:dev.conveysoft@gmail.com">dev.conveysoft@gmail.com</a>
+          <a href="mailto:sadman@conveysoft.dev">sadman@conveysoft.dev</a>
         </Office>
       </li>
     </ul>
